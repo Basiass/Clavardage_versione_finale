@@ -83,7 +83,7 @@ Certaines fois, il est possible que le contenu de la fenêtre apparaisse grisé 
 * Un utilisateur peut quitter la conversation en cliquant sur la croix rouge en haut de la fenêtre ou sur le bouton *Exit*.
 
 * L'utilisateur est informé lorsque son interlocuteur quitte la fenêtre de chat, et il ne peut plus lui envoyer de messages sur cette fenêtre.
-
+![image](50263916_362412687879709_3217413572560683008_n.png)
 Note :
 Certaines fois, il est possible que le contenu de la fenêtre apparaisse grisé sans rien à l'intérieur. Ce n'est pas un problème, il suffit d'agrandir puis de rétrécir la fenêtre pour retrouver un affichage consistant.
 
