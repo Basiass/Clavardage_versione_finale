@@ -1,12 +1,7 @@
-
-Le# Clavardage_versione_finale
-
-Ce dossier regroupe :
+Le dossier Clavardage regroupe :
 
 * Tous les fichiers de l'application de clavardage
 * Un driver sqlite-jdbc (format .jar)
-
-* Les fichiers necessaires au lancement du serveur de présence //TODO
 
 # Installation préalable
 
@@ -17,6 +12,34 @@ Le projet ne necessite pas l'installation de MySQL !
 * Le main est dans la classe Utilisateur, dans le package Application.
 * Il suffit d'executer le main pour lancer le programme. 
 
+# Serveur de présence
+
+Le serveur de présence n'est pas en état de marche : nous avons travaillé dessus, mais il n'est pas encore abouti, il est donc inutile de le tester. Les deux classes en cours de développement sont regroupées dans le dossier *Classes_Serveur*.
+
+## Installation
+
+Il fonctionne sur Eclipse JEE avec la version 6 de Tomcat.
+Il faut créer un nouveau package "Serveur" avec la classe ".." et la classe "UtilisateurActif" en librairie.
+Il faut également inserer la classe "Serveur_talker" du coté utilisateur.
+
+ ## Conception
+ 
+ Ce serveur HTTP a été concu de la facon suivante : 
+ 
+* Un serveur HTTP stocke la liste des utilisateurs actifs sur le réseau.
+ 
+* Lorsqu'un utilisateur se connecte, il envoie directement au serveur une notification de type "UtilisateurActif" (avec son identifiant, son pseudo, et des informations de type Boolean), afin que le serveur puisse stocker l'information. Cette notification se transmet par le biais d'une requête http de type : 
+ http://10.1.5.233:8080/Serveur_servlet/Servlet?maj=0&deconnection=1&pseudo=" + user.GetPseudo() + "&identifiant=" + user.GetIdentifiant ..."
+ 
+* A chaque nouvelle connection, le serveur renvoie la liste des utilisateurs actifs sous forme de  String, de type : 
+"," + Pseudo + "," + Identifiant + "," + InetAddress + ";" +  "," + Pseudo + "," + Identifiant + "," + InetAddress + ";"  + ... + "§". Il ajoute ensuite le nouveau connecté à la liste de tous les utilisateurs actifs sur le réseau.
+ 
+* Le nouvel utilisateur n'a plus qu'à re-construire une liste d'utilisateur actif grace à la réponse reçue du serveur.
+ 
+* De plus, toutes les 5 secondes, nous avions prévu, pour chaque utilisateur, de faire une requete de mise à jour : le serveur renverra donc sa liste concatenée en String à chaque mise à jour. Ainsi chaque utilisateur sera au courant de la venue ou du départ d'un utilisateur.
+ 
+Note : 
+Le serveur fonctionne de la même manière qu'en UDP : Lorsqu'on reçoit un UtilisateurActif avec l'attribut deconnection à vrai, on le supprime de la liste des utilisateurs actifs sur le réseau.
 
 # Manuel Utilisateur
 
@@ -24,23 +47,24 @@ L'application de clavardage est un système de chat, vous permettant de communiq
 Lors de votre première connection, vous devez choisir un identifiant et un mot de passe qui seront sauvergardés localement sur votre machine pour vous permettre de réacceder au service de chat, et d'assurer la confidentialité de vos conversations.
 Vous apparaitrez aux yeux des autres utilisateurs sous votre pseudo, que vous pourrez choisir et modifier à votre guise durant vos sessions de clavardage.
 
-Deux versions sont disponibles avec deux modes de contrôle de présence :
-* basé sur UDP
-* basé sur un serveur HTTP
+Une seule version est pour l'instant disponible : celle avec le mode de contrôle de présence basé sur UDP.
 
 Fonctionnalités non supportées :
-* Envoi d'image
+* Envoi d'image ou de fichiers
+* Serveur HTTP encore en cours de développement 
+* Confidentialité de la base de données
 
 # L'application de clavardage
 
 Voici un guide d'utilisation de l'interface.
+Vous trouverez une vidéo explicative dans le projet intitulée *Tutoriel Chat - Prise_en_main*.
 
 ## Fenêtre principale
 
-* Lorsque l'utilisateur se connecte, on lui demande de rentrer son pseudo //TODO
-* Sur la fenêtre principale, il peut choisir de se déconnecter auquel cas il n'apparaitra plus dans la liste des utilisateurs disponibles
+* Lorsque l'utilisateur se connecte, on lui demande de rentrer son identifiant. Il apparait sous son identifiant jusqu'à ce qu'il décide de choisir un autre pseudo.
+* Sur la fenêtre principale, il peut choisir de se déconnecter auquel cas il n'apparaitra plus dans la liste des utilisateurs disponibles.
 * L'utilisateur peut aussi choisir de changer de pseudo. Ce pseudo doit être non nul, et surtoût non utilisé par un autre utilisateur. S'il n'est pas disponible, un message apparaît en précisant à l'utilisateur que le pseudo entré est déjà utilisé, et il peut retourner sur la fenêtre précédente afin d'en entrer un autre valide. Si l'utilisateur ferme la fenêtre, le changement de mot de passe est annulé.
-display fenêtre de changement de pseudo
+[][][][]display fenêtre de changement de pseudo.
 * En dessous, les Utilisateurs actifs apparaissent en temps réel dès qu'il se connecte. Pour initier une conversation, il suffit de cliquer sur le pseudo de l'utilisateur avec qui on veut communiquer et la fenêtre de conversation associée s'ouvre.
 
 Note :
@@ -67,26 +91,6 @@ Certaines fois, il est possible que le contenu de la fenêtre apparaisse grisé 
 
 Le choix d'implémentation pour la persistance des données s'est porté sur une sauvegarde locale. Chaque machine enregistre les conversation d'un utilisateur, reconnaissable grâce à son identifiant. Il peut changer de pseudo entre deux sessions de clavardage et ses messages pourront quand même être restitués dans la fenêtre. Seul un utilisateur peut se connecter sur une machine.
 
-# Serveur de présence
-
-Le serveur de présence n'est pas en état de marche : nous avons travaillé dessus, mais il n'est pas encore abouti, il est donc inutil de le tester.
-
-## Installation
-
-Il fonctionne sur Eclipse JEE avec la version 6 de Tomcat.
-Il faut créer un nouveau package "Serveur" avec la classe ".." et la classe "UtilisateurActif" en librairie.
-Il faut également inserér la classe "Serveur_talker" du coté utilisateur.
-
- ## Conception
- 
- Ce serveur HTTP a été concu de la facon suivante : 
- - Un utilisateur se connecte et envoie directement au serveur une notification de type "UtilisateurActif" (avec son identifiant, son pseudo, et des informations de type Boolean). Cette notification se transmet par adresse http de type : 
- http://10.1.5.233:8080/Serveur_servlet/Servlet?maj=0&deconnection=1&pseudo=" + user.GetPseudo() + "&identifiant=" + user.GetIdentifiant ..."
- - Le serveur, qui contient une liste d'Utilisateur Actif, lui renvoie cette liste en String, de type : 
- "," + Pseudo + "," + Identifiant + "," + InetAddress + ";" +  "," + Pseudo + "," + Identifiant + "," + InetAddress + ";"  + ... + "§"
- Il rempli ensuite sa liste du nouvel utilisateur
- - Le nouvel utilisateur n'a plus qu'à re-construire une liste d'utilisateur actif grace à la réponse recu.
- 
- De plus, toutes les 5 secondes, nous avions prévu, pour chaque utilisateur, de faire une requete de mise à jour : le serveur renverra donc sa liste concatenée en String à chaque mise à jour. Ainsi chaque utilisateur sera au courant de la venue ou du départ d'un utilisateur.
- 
- 
+Dans la base de données,
+-> login mdp
+-> table pour sauvegarde des messages, màj pseudo s'il a changé quand on réaffiche l'historique
