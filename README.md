@@ -1,4 +1,5 @@
-# Clavardage_versione_finale
+
+Le# Clavardage_versione_finale
 
 Ce dossier regroupe :
 
@@ -67,3 +68,25 @@ Certaines fois, il est possible que le contenu de la fenêtre apparaisse grisé 
 Le choix d'implémentation pour la persistance des données s'est porté sur une sauvegarde locale. Chaque machine enregistre les conversation d'un utilisateur, reconnaissable grâce à son identifiant. Il peut changer de pseudo entre deux sessions de clavardage et ses messages pourront quand même être restitués dans la fenêtre. Seul un utilisateur peut se connecter sur une machine.
 
 # Serveur de présence
+
+Le serveur de présence n'est pas en état de marche : nous avons travaillé dessus, mais il n'est pas encore abouti, il est donc inutil de le tester.
+
+## Installation
+
+Il fonctionne sur Eclipse JEE avec la version 6 de Tomcat.
+Il faut créer un nouveau package "Serveur" avec la classe ".." et la classe "UtilisateurActif" en librairie.
+Il faut également inserér la classe "Serveur_talker" du coté utilisateur.
+
+ ## Conception
+ 
+ Ce serveur HTTP a été concu de la facon suivante : 
+ - Un utilisateur se connecte et envoie directement au serveur une notification de type "UtilisateurActif" (avec son identifiant, son pseudo, et des informations de type Boolean). Cette notification se transmet par adresse http de type : 
+ http://10.1.5.233:8080/Serveur_servlet/Servlet?maj=0&deconnection=1&pseudo=" + user.GetPseudo() + "&identifiant=" + user.GetIdentifiant ..."
+ - Le serveur, qui contient une liste d'Utilisateur Actif, lui renvoie cette liste en String, de type : 
+ "," + Pseudo + "," + Identifiant + "," + InetAddress + ";" +  "," + Pseudo + "," + Identifiant + "," + InetAddress + ";"  + ... + "§"
+ Il rempli ensuite sa liste du nouvel utilisateur
+ - Le nouvel utilisateur n'a plus qu'à re-construire une liste d'utilisateur actif grace à la réponse recu.
+ 
+ De plus, toutes les 5 secondes, nous avions prévu, pour chaque utilisateur, de faire une requete de mise à jour : le serveur renverra donc sa liste concatenée en String à chaque mise à jour. Ainsi chaque utilisateur sera au courant de la venue ou du départ d'un utilisateur.
+ 
+ 
