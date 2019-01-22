@@ -45,7 +45,7 @@ Certaines fois, il est possible que le contenu de la fenêtre apparaisse grisé 
 Note :
 Certaines fois, il est possible que le contenu de la fenêtre apparaisse grisé sans rien à l'intérieur. Ce n'est pas un problème, il suffit d'agrandir puis de rétrécir la fenêtre pour retrouver un affichage consistant.
 
-# Sauvegarde de l'historique via une base de donnée
+# Sauvegarde de l'historique via une base de données
 
 Le choix d'implémentation pour la persistance des données s'est porté sur une sauvegarde locale. Chaque machine enregistre les conversation d'un utilisateur, reconnaissable grâce à son identifiant. Il peut changer de pseudo entre deux sessions de clavardage et ses messages pourront quand même être restitués dans la fenêtre. Seul un utilisateur peut se connecter sur une machine.
 
