@@ -7,7 +7,7 @@ Le dossier Clavardage regroupe :
 
 Le projet ne necessite pas l'installation de MySQL !
 
-* Télécharger le projet sous Eclipse
+* Télécharger les fichiers du projet Clavardage sous Eclipse
 * Ajouter le driver sqlite au classpath du projet afin qu'il puisse être utilisé. Sous Eclipse : faire un clic droit sur le projet Eclipse, cliquer sur *Propriétés*, *Java Build Path*. Dans l'onglet Librairies, choisir *Add JARs* pour ajouter "sqlite-jdbc-3.23.1.jar".
 * Le main est dans la classe Utilisateur, dans le package Application.
 * Il suffit d'executer le main pour lancer le programme. 
