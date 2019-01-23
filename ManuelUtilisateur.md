@@ -15,7 +15,7 @@ Fonctionnalités non supportées :
 # L'application de clavardage
 
 Voici un guide d'utilisation de l'interface.
-Vous trouverez une vidéo de démonstration intitulée *Tutoriel_Chat_Prise_en_main*.
+Vous trouverez une vidéo de démonstration en suivant ce lien https://drive.google.com/file/d/159ESpJxrA8wpZHuWeRUqR4IeIn6pRjS1/view?usp=sharing.
 
 ## Connection
 
