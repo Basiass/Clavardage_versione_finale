@@ -28,10 +28,10 @@ Vous trouverez une vidéo de démonstration en suivant ce lien https://drive.goo
 ## Fenêtre principale
 
 * Sur la fenêtre principale, vous pouvez choisir de vous déconnecter auquel cas vous n'apparaitrez plus dans la liste des utilisateurs disponibles.
-![image](MainWindow.png)
+![image](Capture_ecran/MainWindow.png)
 
 * Vous pouvez aussi choisir de changer de pseudo. Ce pseudo doit être non nul, et surtoût non utilisé par un autre utilisateur. S'il n'est pas disponible, un message apparaît en vous précisant que le pseudo entré est déjà utilisé, et vous pouvez retourner sur la fenêtre précédente afin d'en entrer un autre valide. Si vous fermez la fenêtre, le changement de mot de passe est annulé.
-![image](Changementpseudo.png)
+![image](Capture_ecran/Changementpseudo.png)
 
 * En dessous, les utilisateurs actifs sur le réseau apparaissent en temps réel dès qu'ils se connectent. Pour initier une conversation, il suffit de cliquer sur le pseudo de l'utilisateur avec qui on veut communiquer et la fenêtre de conversation associée s'ouvre.
 
@@ -41,7 +41,7 @@ Certaines fois, il est possible que le contenu de la fenêtre apparaisse grisé 
 ## Fenêtre de chat
 
 * Il y a ouverture d'une fenêtre de chat pour chaque nouvelle conversation initiée en cliquant sur le pseudo d'un utilisateur.
-![image](Message.png)
+![image](Capture_ecran/Message.png)
 
 * Lorsque vous ouvrez une conversation avec un utilisateur, l'ensemble de l'historique des messages entre vous est affiché, même si un de vous a changé de pseudo entre temps. L'affichage des anciens messages est horodaté et affiche le pseudo que vous avez défini au moment de l'ouverture de la conversation. En revanche, cet historique est local, ce qui veut dire que vous devez toujours utiliser le même ordinateur pour y avoir accès.
 
@@ -63,7 +63,7 @@ Seul un utilisateur peut se connecter sur une machine.
 
 Ci-dessous une vision de l'historique récupéré lorsqu'on ré-ouvre une conversation avec un utilisateur :
 
-![historique](Historique.png)
+![historique](Capture_ecran/Historique.png)
 
 Note : 
 La base de données stocke aussi l'identifiant ainsi que le mot de passe. 
