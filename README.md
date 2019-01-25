@@ -15,11 +15,12 @@ Le projet ne necessite pas l'installation de MySQL !
 # Serveur de présence
 
 Le serveur de présence n'est pas en état de marche : nous avons travaillé dessus, mais il n'est pas encore abouti, il est donc inutile de le tester. Les deux classes en cours de développement sont regroupées dans le dossier *Classes_Serveur*.
+Nous avons tout de même choisi de vous présenter nos travaux.
 
 ## Installation
 
 Il fonctionne sur Eclipse JEE avec la version 6 de Tomcat.
-Il faut créer un nouveau package "Serveur" avec la classe ".." et la classe "UtilisateurActif" en librairie.
+Il faut créer un nouveau package "Serveur" avec la classe "Servlet" et la classe "UtilisateurActif" en librairie.
 Il faut également inserer la classe "Serveur_talker" du coté utilisateur.
 
  ## Conception
