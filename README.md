@@ -2,6 +2,8 @@ Le dossier Clavardage regroupe :
 
 * Tous les fichiers de l'application de clavardage
 * Un driver sqlite-jdbc (format .jar)
+* Un dossier contenant des diagrammes de concetion (Diagramme_de_conception)
+* Un dossier contenant des captures d'écran (Capture_ecran)
 
 # Installation préalable
 
