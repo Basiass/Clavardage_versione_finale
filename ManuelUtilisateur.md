@@ -23,7 +23,7 @@ Vous trouverez une vidéo de démonstration en suivant ce lien https://drive.goo
 
 * Vous apparaitrez sous votre identifiant jusqu'à ce que vous décidiez de choisir un autre pseudo. 
 
-![image](Connection.png)
+![image](Capture_ecran/Connection.png)
 
 ## Fenêtre principale
 
